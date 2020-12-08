@@ -1,6 +1,7 @@
 <script>
     // components
     import ThemeBtn from './components/ThemeBtn.svelte';
+    import TodoList from './components/TodoList.svelte';
 
     // themes
     let body = window.document.body;
@@ -50,6 +51,9 @@
         <h1 class="heading">Todo</h1>
         <ThemeBtn element={body} on:click={changeTheme}/>
     </div>
+
+    <TodoList/>
+
     <div class="main__footer">
         <p class="note">Drag and drop to reorder list.</p>
         <p class="attribution">Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a href="https://github.com/ApplePieGiraffe" target="_blank">ApplePieGiraffe</a>.</p>
@@ -89,7 +93,7 @@
 
     .main {
         width: 100%;
-        max-width: 60rem;
+        max-width: 67.5rem;
         margin: 0 auto;
         margin-top: 6rem;
     }
@@ -99,8 +103,7 @@
     .main__header {
         display: flex;
         align-items: center;
-
-        margin-bottom: 40rem;
+        margin-bottom: 5rem;
     }
 
     .heading {
@@ -128,11 +131,12 @@
     }
 
     .attribution {
+        margin-bottom: 3rem;
         font-size: 11px;
     }
 
     .attribution a {
-        color: tomato;
+        color: var(--color-bright-blue);
     }
 
     /* media queries */
@@ -140,6 +144,10 @@
     @media only screen and (min-width: 800px) {
         .main {
             margin-top: 8.75rem;
+        }
+
+        .main__header {
+            margin-bottom: 6rem;
         }
 
         .heading {

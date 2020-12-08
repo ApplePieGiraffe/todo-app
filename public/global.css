@@ -18,17 +18,33 @@ body {
     transition: background 1s;
 }
 
+:root {
+    --color-bright-blue: hsl(220, 98%, 61%);
+    --gradient-primary: linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+
 .dark-theme {
     --color-bg: hsl(235, 21%, 11%);
+    --color-surface: hsl(235, 24%, 19%);
+    --color-border: #393A4B;
+    --color-text-active: hsl(234, 39%, 85%);
+    --color-text-completed: hsl(233, 14%, 35%);
     --color-text-1: hsl(235, 16%, 43%);
 }
 
 .light-theme {
     --color-bg: hsl(0, 0%, 98%);
+    --color-surface: hsl(0, 0%, 100%);
+    --color-border: #E3E4F1;
+    --color-text-active: hsl(235, 19%, 35%);
+    --color-text-completed: hsl(233, 11%, 84%);
     --color-text-1: hsl(235, 9%, 61%);
 }
 
 .christmas-theme {
     --color-bg: #59886b;
+    --color-surface: hsl(13, 100%, 31%);
+    --color-border: #000dc4;
+    --color-text-active: hsl(153, 100%, 15%);
     --color-text-1: #c05555;
 }
