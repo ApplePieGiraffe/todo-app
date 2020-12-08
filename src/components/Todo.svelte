@@ -44,6 +44,7 @@
     }
 
     .fake-checkbox-wrapper {
+        position: relative;
         width: 3rem;
         height: 3rem;
         margin-right: 3rem;
@@ -53,11 +54,26 @@
         transition: background 1s;
     }
 
-    .label:hover .fake-checkbox-wrapper {
+    .fake-checkbox-wrapper::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
         background: var(--gradient-primary);
+        opacity: 0;
+        transition: opacity .5s;
+    }
+
+    .label:hover .fake-checkbox-wrapper::before {
+        opacity: 1;
     }
 
     .fake-checkbox {
+        position: relative;
+        z-index: 1;
         display: flex;
         width: 100%;
         height: 100%;
