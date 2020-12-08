@@ -1,17 +1,34 @@
 html {
-	font-size: 50%;
-	box-sizing: border-box;
+    font-size: 50%;
+    box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
-	box-sizing: inherit;
-	margin: 0;
-	padding: 0;
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-	font-family: 'Josefin Sans', sans-serif;
-	font-size: 2.25rem;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 2.25rem;
+    background: var(--color-bg);
+    transition: background 1s;
+}
+
+.dark-theme {
+    --color-bg: hsl(235, 21%, 11%);
+    --color-text-1: hsl(235, 16%, 43%);
+}
+
+.light-theme {
+    --color-bg: hsl(0, 0%, 98%);
+    --color-text-1: hsl(235, 9%, 61%);
+}
+
+.christmas-theme {
+    --color-bg: #59886b;
+    --color-text-1: #c05555;
 }
