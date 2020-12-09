@@ -1,8 +1,12 @@
 <script>
+    // components
     import Todo from './Todo.svelte';
 
-    let itemsLeft = 5;
+    // local storage
 
+
+
+    // todos
     let todos = [
         {
             name: 'Complete online JavaScript course',
@@ -35,34 +39,78 @@
             id: 5
         },
     ];
+    
+    // variables
+    let newTodo;
+    let itemsLeft = todos.filter((todo) => !todo.completed).length;
+    let idCount = todos.length;
+    let filter = 'all';
+
+    // functions
+    function addTodo() {
+        if (newTodo) {
+            todos = [...todos, {name: newTodo, completed: false, id: idCount}];
+            newTodo = '';
+            idCount++;
+        }
+    }
+
+    function clearCompleted() {
+        todos = todos.filter((todo) => todo.completed === false);
+    }
+
+    function deleteTodo(e) {
+        console.log('delete todo');
+        todos = todos.filter((todo) => todo.id != e.detail);
+    }
+
+    // add 'press 'enter' to add new todo' functionality...
+    function handleKeydown(e) {
+        if (e.keyCode === 13) {
+            addTodo();
+        }
+    }
 </script>
 
-<form class="todo-list" on:submit|preventDefault>
+<svelte:window on:keydown={handleKeydown}/>
+
+<form class="todo-list" on:submit|preventDefault={addTodo}>
     <div class="todo-list__input-wrapper">
-        <input class="todo-list__input" type="text" placeholder="Create a new todo...">
+        <input class="todo-list__input" type="text" placeholder="Create a new todo..." bind:value={newTodo}>
     </div>
 
-    <ul class="todo-list__list">
-        {#each todos as todo (todo.id)}
-            <Todo name={todo.name} completed={todo.completed} id={todo.id}/>
-        {/each}
-    </ul>
-
-    <div class="todo-list__footer">
-        <span class="items-left">{itemsLeft} items left</span>
-        <div class="todo-list__options-container">
-            <button class="todo-list__filter-option active-filter-option">All</button>
-            <button class="todo-list__filter-option">Active</button>
-            <button class="todo-list__filter-option">Completed</button>
+    <div class="todo-list__container">
+        <ul class="todo-list__list">
+            {#if filter === 'all'}
+                {#each todos as todo (todo.id)}
+                    <Todo name={todo.name} bind:completed={todo.completed} id={todo.id} on:deleteTodo={deleteTodo}/>
+                {/each}
+            {:else if filter === 'active'}
+                {#each todos.filter((todo) => !todo.completed) as todo (todo.id)}
+                    <Todo name={todo.name} bind:completed={todo.completed} id={todo.id} on:deleteTodo={deleteTodo}/>
+                {/each}
+            {:else if filter === 'completed'}
+                {#each todos.filter((todo) => todo.completed) as todo (todo.id)}
+                    <Todo name={todo.name} bind:completed={todo.completed} id={todo.id} on:deleteTodo={deleteTodo}/>
+                {/each}
+            {/if}
+        </ul>
+    
+        <div class="todo-list__footer">
+            <span class="items-left">{itemsLeft} items left</span>
+            <div class="todo-list__options-container">
+                <button class="todo-list__filter-option" class:active-filter={filter === 'all'} on:click|preventDefault={() => filter = 'all'}>All</button>
+                <button class="todo-list__filter-option" class:active-filter={filter === 'active'} on:click|preventDefault={() => filter = 'active'}>Active</button>
+                <button class="todo-list__filter-option" class:active-filter={filter === 'completed'} on:click|preventDefault={() => filter = 'completed'}>Completed</button>
+            </div>
+            <button class="clear-completed" on:click|preventDefault={clearCompleted}>Clear Completed</button>
         </div>
-        <button class="clear-completed">Clear Completed</button>
     </div>
 </form>
 
 <style>
     .todo-list {
         margin-bottom: 12rem;
-        /* box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5); */
     }
 
     /* input */
@@ -91,7 +139,6 @@
 
         border: none;
         border-radius: 5px;
-        /* box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5); */
         padding-left: 9rem;
         background: var(--color-surface);
 
@@ -106,6 +153,12 @@
         color: var(--color-text-1);
         font-family: 'Josefin Sans', sans-serif;
         opacity: 1;
+    }
+
+    .todo-list__container {
+        border-radius: 5px;
+        box-shadow: var(--box-shadow);
+        transition: box-shadow 1s;
     }
 
     /* todo-list  */
@@ -180,7 +233,7 @@
         margin-right: 2rem;
     }
 
-    .active-filter-option {
+    .active-filter {
         color: var(--color-bright-blue);
     }
 

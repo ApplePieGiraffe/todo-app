@@ -30,6 +30,7 @@ body {
     --color-text-active: hsl(234, 39%, 85%);
     --color-text-completed: hsl(233, 14%, 35%);
     --color-text-1: hsl(235, 16%, 43%);
+    --box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
 }
 
 .light-theme {
@@ -39,6 +40,7 @@ body {
     --color-text-active: hsl(235, 19%, 35%);
     --color-text-completed: hsl(233, 11%, 84%);
     --color-text-1: hsl(235, 9%, 61%);
+    --box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
 }
 
 .christmas-theme {
@@ -47,4 +49,5 @@ body {
     --color-border: #000dc4;
     --color-text-active: hsl(153, 100%, 15%);
     --color-text-1: #c05555;
+    --box-shadow: 0px 35px 50px -15px rgba(78, 105, 35, 0.5);
 }

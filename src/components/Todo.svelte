@@ -1,7 +1,16 @@
 <script>
+    // modules
+    import { createEventDispatcher } from 'svelte';
+
+    let dispatch = createEventDispatcher();
+
     export let name;
     export let completed;
     export let id;
+    
+    function deleteTodo() {
+        dispatch('deleteTodo', id);
+    }
 </script>
 
 <li class="todo" class:completed={completed}>
@@ -14,7 +23,7 @@
         </div>
         <span class="name">{name}</span>
     </label>
-    <button class="btn-close" aria-label="delete button">
+    <button class="btn-close" type="button" aria-label="delete button" on:click|preventDefault={deleteTodo}>
         <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>
     </button>
 </li>
@@ -23,7 +32,7 @@
     .todo {
         display: flex;
         width: 100%;
-        height: 8rem;
+        height: 6.5rem;
         align-items: center;
         border-bottom: 1px solid var(--color-border);
         padding: 0 3rem;
@@ -102,6 +111,7 @@
 
     .name {
         position: relative;
+        font-size: 1.5rem;
         transition: color 1s;
     }
 
@@ -137,5 +147,17 @@
     .completed .name::before {
         width: 100%;
         background: var(--color-text-completed);
+    }
+
+    /* media queries */
+
+    @media only screen and (min-width: 800px) {
+        .todo {
+            height: 8rem;
+        }
+
+        .name {
+            font-size: 2.25rem;
+        }
     }
 </style>
