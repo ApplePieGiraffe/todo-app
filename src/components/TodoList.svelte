@@ -52,8 +52,6 @@
     $: {
         localStorage.setItem('todos', JSON.stringify(todos));
     }
-
-    // localStorage.clear();
     
     // variables
     let newTodo;
@@ -61,12 +59,33 @@
     let idCount = todos.length;
     let filter = 'all';
 
-    // functions
+    // FUNCTIONS
     function addTodo() {
         if (newTodo) {
-            todos = [...todos, {name: newTodo, completed: false, id: idCount}];
+            // generate unique (unused) ID...
+            let usedIDs = [];
+            let count = 0;
+            let newID;
+
+            for (let todo of todos) {
+                usedIDs.push(todo.id);
+            }
+
+            while (true) {
+                if (usedIDs.includes(count)) {
+                    console.log('nope');
+                    count++;
+                } else {
+                    console.log('yes');
+                    newID = count;
+                    break;
+                }
+            }
+
+            // add todo to todos...
+            todos = [...todos, {name: newTodo, completed: false, id: newID}];
             newTodo = '';
-            idCount++;
+            console.log(todos);
         }
     }
 
