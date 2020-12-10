@@ -21,7 +21,7 @@
 
 <li class="todo" class:completed={completed} class:animation--fadeOut={deleteAnimation === true} in:fade|local>
     <label class="label" for={'checkbox-' + id}>
-        <input class="checkbox" id={'checkbox-' + id} type="checkbox" bind:checked={completed}>
+        <input class="checkbox sr-only" id={'checkbox-' + id} type="checkbox" bind:checked={completed}>
         <div class="fake-checkbox-wrapper">
             <div class="fake-checkbox">
                 <img class="icon-check" src="/assets/img/icon-check.svg" alt="" aria-hidden="true">
@@ -54,8 +54,8 @@
         cursor: pointer;
     }
 
-    .checkbox {
-        display: none;
+    .checkbox:focus + .fake-checkbox-wrapper {
+        outline: 2px dotted var(--color-text-active);
     }
 
     .fake-checkbox-wrapper {
@@ -106,9 +106,14 @@
     .btn-close {
         opacity: 0;
         border: none;
+        padding: .75rem;
         background: transparent;
         cursor: pointer;
         transition: opacity .3s;
+    }
+
+    .btn-close:focus {
+        opacity: 1;
     }
 
     .todo:hover .btn-close {

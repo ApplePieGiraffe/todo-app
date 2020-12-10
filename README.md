@@ -1,8 +1,9 @@
 ### Todo
 
 <!-- * local storage -->
-* add transitions/animations
-* accessibility
+<!-- * add transitions/animations -->
+* add "Clear Completed" transition/animation
+<!-- * accessibility -->
 * drag-and-drop
 
 *Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
