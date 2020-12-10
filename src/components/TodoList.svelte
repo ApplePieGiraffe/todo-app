@@ -7,6 +7,8 @@
     // create name 'todos'...
     let todos;
 
+    console.log('flagged');
+
     // add todos to local storage if not already in local storage...
     if (localStorage.getItem('todos') === null) {
         localStorage.setItem('todos', JSON.stringify([
@@ -115,7 +117,7 @@
     </div>
 
     <div class="todo-list__container">
-        <ul class="todo-list__list">
+        <ul class="todo-list__list" id="todo-list">
             {#if filter === 'all'}
                 {#each todos as todo (todo.id)}
                     <Todo name={todo.name} bind:completed={todo.completed} id={todo.id} on:deleteTodo={deleteTodo}/>

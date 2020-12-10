@@ -5,3 +5,13 @@ const app = new App({
 });
 
 export default app;
+
+// add the scroll thingy...
+
+import Sortable from "sortablejs";
+
+let sortableTodoList = document.getElementById('todo-list');
+
+let sortable = new Sortable(sortableTodoList, {
+	animation: 500
+});

@@ -175,22 +175,6 @@
 
     /* animations */
 
-    @keyframes fadeIn {
-        0% {
-            height: 0;
-            opacity: 0;
-        }
-
-        100% {
-            height: 8rem;
-            opacity: 1;
-        }
-    }
-
-    /* .animation--fadeIn {
-        animation: fadeIn 1s;
-    } */
-
     @keyframes fadeOutLeft {
         0% {
             transform: translate(0);
