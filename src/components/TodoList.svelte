@@ -56,7 +56,6 @@
     // variables
     let newTodo;
     $: itemsLeft = todos.filter((todo) => !todo.completed).length;
-    let idCount = todos.length;
     let filter = 'all';
 
     // FUNCTIONS
@@ -94,6 +93,7 @@
     }
 
     function deleteTodo(e) {
+        // wait for animation to finish before removing todo...
         setTimeout(() => {
             todos = todos.filter((todo) => todo.id != e.detail);
         }, 1000);

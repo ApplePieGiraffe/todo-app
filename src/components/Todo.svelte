@@ -1,6 +1,7 @@
 <script>
     // modules
     import { createEventDispatcher } from 'svelte';
+    import { fade } from 'svelte/transition';
 
     let dispatch = createEventDispatcher();
 
@@ -8,17 +9,17 @@
     export let completed;
     export let id;
 
-    let animate = false;
+    let deleteAnimation = false;
     
     function deleteTodo() {
-        animate = true;
+        deleteAnimation = true;
         dispatch('deleteTodo', id);
-
-        // setTimeout(dispatch('deleteTodo', id), 1000);
     }
 </script>
 
-<li class="todo" class:completed={completed} class:animation--delete={animate === true}>
+<!-- animation--fadeIn -->
+
+<li class="todo" class:completed={completed} class:animation--fadeOut={deleteAnimation === true} in:fade|local>
     <label class="label" for={'checkbox-' + id}>
         <input class="checkbox" id={'checkbox-' + id} type="checkbox" bind:checked={completed}>
         <div class="fake-checkbox-wrapper">
@@ -169,14 +170,28 @@
 
     /* animations */
 
+    @keyframes fadeIn {
+        0% {
+            height: 0;
+            opacity: 0;
+        }
+
+        100% {
+            height: 8rem;
+            opacity: 1;
+        }
+    }
+
+    /* .animation--fadeIn {
+        animation: fadeIn 1s;
+    } */
+
     @keyframes fadeOutLeft {
         0% {
-            height: 8rem;
             transform: translate(0);
             opacity: 1;
         }
         50% {
-            height: 8rem;
             transform: translate(-20rem);
             opacity: 0;
         }
@@ -187,7 +202,7 @@
         }
     }
 
-    .animation--delete {
+    .animation--fadeOut {
         animation: fadeOutLeft 1s;
     }
 </style>
