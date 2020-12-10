@@ -2,47 +2,62 @@
     // components
     import Todo from './Todo.svelte';
 
-    // local storage
+    // LOCAL STORAGE
 
+    // create name 'todos'...
+    let todos;
 
+    // add todos to local storage if not already in local storage...
+    if (localStorage.getItem('todos') === null) {
+        localStorage.setItem('todos', JSON.stringify([
+            {
+                name: 'Complete online JavaScript course',
+                completed: true,
+                id: 0
+            },
+            {
+                name: 'Jog around the park 3x',
+                completed: false,
+                id: 1
+            },
+            {
+                name: '10 minutes meditation',
+                completed: false,
+                id: 2
+            },
+            {
+                name: 'Read for 1 hour',
+                completed: false,
+                id: 3
+            },
+            {
+                name: 'Pick up groceries',
+                completed: false,
+                id: 4
+            },
+            {
+                name: 'Complete Todo App on Frontend Mentor',
+                completed: false,
+                id: 5
+            },
+        ]));
+    }
 
-    // todos
-    let todos = [
-        {
-            name: 'Complete online JavaScript course',
-            completed: true,
-            id: 0
-        },
-        {
-            name: 'Jog around the park 3x',
-            completed: false,
-            id: 1
-        },
-        {
-            name: '10 minutes meditation',
-            completed: false,
-            id: 2
-        },
-        {
-            name: 'Read for 1 hour',
-            completed: false,
-            id: 3
-        },
-        {
-            name: 'Pick up groceries',
-            completed: false,
-            id: 4
-        },
-        {
-            name: 'Complete Todo App on Frontend Mentor',
-            completed: false,
-            id: 5
-        },
-    ];
+    // localStorage.clear();
+
+    // assign todos from local storage to name 'todos'...
+    todos = JSON.parse(localStorage.getItem('todos'));
+
+    // update local storage whenever 'todos' is changed...
+    $: {
+        localStorage.setItem('todos', JSON.stringify(todos));
+    }
+
+    // localStorage.clear();
     
     // variables
     let newTodo;
-    let itemsLeft = todos.filter((todo) => !todo.completed).length;
+    $: itemsLeft = todos.filter((todo) => !todo.completed).length;
     let idCount = todos.length;
     let filter = 'all';
 
@@ -60,7 +75,6 @@
     }
 
     function deleteTodo(e) {
-        console.log('delete todo');
         todos = todos.filter((todo) => todo.id != e.detail);
     }
 

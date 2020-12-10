@@ -34,7 +34,6 @@
             pathDesktop: 'assets/img/bg-desktop-christmas.jpg',
             id: 2
         }];
-
 </script>
 
 <div class="bg-img-container">

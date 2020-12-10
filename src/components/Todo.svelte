@@ -160,4 +160,22 @@
             font-size: 2.25rem;
         }
     }
+
+
+    /* animations */
+
+    @keyframes fadeOutLeft {
+        0% {
+            transform: translate(0);
+            opacity: 1;
+        }
+        100% {
+            transform: translate(-20rem);
+            opacity: 0;
+        }
+    }
+
+    .animation--fade-out-left {
+        animation: fadeOutLeft 1s;
+    }
 </style>

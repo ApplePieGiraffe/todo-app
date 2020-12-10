@@ -1,6 +1,6 @@
 ### Todo
 
-* local storage
+<!-- * local storage -->
 * add transitions/animations
 * accessibility
 * drag-and-drop
