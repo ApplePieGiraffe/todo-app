@@ -7,13 +7,18 @@
     export let name;
     export let completed;
     export let id;
+
+    let animate = false;
     
     function deleteTodo() {
+        animate = true;
         dispatch('deleteTodo', id);
+
+        // setTimeout(dispatch('deleteTodo', id), 1000);
     }
 </script>
 
-<li class="todo" class:completed={completed}>
+<li class="todo" class:completed={completed} class:animation--delete={animate === true}>
     <label class="label" for={'checkbox-' + id}>
         <input class="checkbox" id={'checkbox-' + id} type="checkbox" bind:checked={completed}>
         <div class="fake-checkbox-wrapper">
@@ -166,16 +171,23 @@
 
     @keyframes fadeOutLeft {
         0% {
+            height: 8rem;
             transform: translate(0);
             opacity: 1;
         }
+        50% {
+            height: 8rem;
+            transform: translate(-20rem);
+            opacity: 0;
+        }
         100% {
+            height: 0;
             transform: translate(-20rem);
             opacity: 0;
         }
     }
 
-    .animation--fade-out-left {
+    .animation--delete {
         animation: fadeOutLeft 1s;
     }
 </style>

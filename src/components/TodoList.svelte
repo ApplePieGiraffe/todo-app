@@ -94,7 +94,9 @@
     }
 
     function deleteTodo(e) {
-        todos = todos.filter((todo) => todo.id != e.detail);
+        setTimeout(() => {
+            todos = todos.filter((todo) => todo.id != e.detail);
+        }, 1000);
     }
 
     // add 'press 'enter' to add new todo' functionality...
@@ -130,7 +132,7 @@
         </ul>
     
         <div class="todo-list__footer">
-            <span class="items-left">{itemsLeft} items left</span>
+            <span class="items-left">{itemsLeft} {itemsLeft === 1 ? 'item' : 'items'} left</span>
             <div class="todo-list__options-container">
                 <button class="todo-list__filter-option" class:active-filter={filter === 'all'} on:click|preventDefault={() => filter = 'all'}>All</button>
                 <button class="todo-list__filter-option" class:active-filter={filter === 'active'} on:click|preventDefault={() => filter = 'active'}>Active</button>
