@@ -81,6 +81,7 @@
     }
 
     .fake-checkbox-wrapper {
+        flex: 1 0 auto;
         position: relative;
         width: 3rem;
         height: 3rem;
@@ -145,6 +146,7 @@
     .name {
         position: relative;
         font-size: 1.5rem;
+        line-height: 2rem;
         transition: color 1s;
     }
 
