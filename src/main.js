@@ -6,7 +6,7 @@ const app = new App({
 
 export default app;
 
-// add the scroll thingy...
+// Sortable.js
 
 import Sortable from "sortablejs";
 

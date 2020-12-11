@@ -91,17 +91,18 @@
         opacity: 1;
     }
 
-    /* main */
+    /* layout */
 
     :global(body) {
         padding: 0 3rem;
+        padding-top: 6rem;
     }
 
     .main {
         width: 100%;
         max-width: 67.5rem;
         margin: 0 auto;
-        margin-top: 6rem;
+        /* margin-top: 6rem; */
     }
 
     /* header */
@@ -148,8 +149,8 @@
     /* media queries */
 
     @media only screen and (min-width: 800px) {
-        .main {
-            margin-top: 8.75rem;
+        :global(body) {
+            padding-top: 8.75rem;
         }
 
         .main__header {

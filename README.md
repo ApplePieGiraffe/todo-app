@@ -5,8 +5,8 @@
 * add "Clear Completed" transition/animation
 <!-- * accessibility -->
 <!-- * drag-and-drop -->
-* christmas theme
-* snow
+<!-- * christmas theme -->
+* snow?
 
 *Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
 

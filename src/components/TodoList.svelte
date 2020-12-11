@@ -2,10 +2,8 @@
     // components
     import Todo from './Todo.svelte';
 
-    // LOCAL STORAGE
-
-    // create name 'todos'...
-    let todos;
+    // local storage
+    let todos; // create name 'todos'...
 
     // add todos to local storage if not already in local storage...
     if (localStorage.getItem('todos') === null) {
@@ -43,14 +41,10 @@
         ]));
     }
 
-    // localStorage.clear();
+    todos = JSON.parse(localStorage.getItem('todos')); // assign todos from local storage to name 'todos'...
 
-    // assign todos from local storage to name 'todos'...
-    todos = JSON.parse(localStorage.getItem('todos'));
-
-    // update local storage whenever 'todos' is changed...
     $: {
-        localStorage.setItem('todos', JSON.stringify(todos));
+        localStorage.setItem('todos', JSON.stringify(todos)); // update local storage whenever 'todos' is changed...
     }
     
     // variables
@@ -58,7 +52,7 @@
     $: itemsLeft = todos.filter((todo) => !todo.completed).length;
     let filter = 'all';
 
-    // FUNCTIONS
+    // functions
     function addTodo() {
         if (newTodo) {
             // generate unique (unused) ID...
@@ -144,6 +138,8 @@
 </form>
 
 <style>
+    /* layout */
+    
     .todo-list {
         margin-bottom: 12rem;
     }

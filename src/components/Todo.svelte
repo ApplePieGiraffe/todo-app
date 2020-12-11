@@ -17,8 +17,6 @@
     }
 </script>
 
-<!-- animation--fadeIn -->
-
 <li class="todo" class:completed={completed} class:animation--fadeOut={deleteAnimation === true} in:fade|local>
     <label class="label" for={'checkbox-' + id}>
         <input class="checkbox sr-only" id={'checkbox-' + id} type="checkbox" bind:checked={completed}>
@@ -35,6 +33,30 @@
 </li>
 
 <style>
+    /* animations */
+
+    @keyframes fadeOutLeft {
+        0% {
+            transform: translate(0);
+            opacity: 1;
+        }
+        50% {
+            transform: translate(-20rem);
+            opacity: 0;
+        }
+        100% {
+            height: 0;
+            transform: translate(-20rem);
+            opacity: 0;
+        }
+    }
+
+    .animation--fadeOut {
+        animation: fadeOutLeft 1s;
+    }
+
+    /* styles */
+
     .todo {
         display: flex;
         width: 100%;
@@ -170,28 +192,5 @@
         .name {
             font-size: 2.25rem;
         }
-    }
-
-
-    /* animations */
-
-    @keyframes fadeOutLeft {
-        0% {
-            transform: translate(0);
-            opacity: 1;
-        }
-        50% {
-            transform: translate(-20rem);
-            opacity: 0;
-        }
-        100% {
-            height: 0;
-            transform: translate(-20rem);
-            opacity: 0;
-        }
-    }
-
-    .animation--fadeOut {
-        animation: fadeOutLeft 1s;
     }
 </style>
