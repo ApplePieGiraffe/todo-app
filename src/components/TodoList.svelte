@@ -227,6 +227,7 @@
         position: absolute;
         top: 8rem;
         left: 0;
+
         display: flex;
         width: 100%;
         height: 6rem;
@@ -234,6 +235,8 @@
         justify-content: center;
         border-radius: 5px;
         background: var(--color-surface);
+        
+        transition: background 1s, color 1s;
     }
 
     /* buttons */

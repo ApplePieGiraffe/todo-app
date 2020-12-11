@@ -20,7 +20,7 @@ html {
 body {
     min-height: 100vh;
     background: url('/assets/img/trees-1.png'), url('/assets/img/trees-2.png'), url('/assets/img/santa.png'), var(--color-bg);
-    background-position: bottom -1rem left -120%, bottom -1rem right -120%, top 360px right -20rem;
+    background-position: bottom -1rem left -42rem, bottom -1rem right -42rem, top 360px right -20rem;
     background-size: 30rem, 30rem, 10rem;
     background-repeat: no-repeat;
     font-family: 'Josefin Sans', sans-serif;
@@ -92,6 +92,5 @@ body.christmas-theme {
 @media only screen and (min-width: 600px) {
     body {
         background-size: 42rem, 42rem, 15rem;
-        background-position: bottom -1rem left -100%, bottom -1rem right -100%, top 360px right -20rem;
     }
 }
