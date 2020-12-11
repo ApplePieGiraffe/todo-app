@@ -149,7 +149,7 @@
         position: relative;
         font-size: 1.5rem;
         line-height: 2rem;
-        transition: color 1s;
+        /* transition: color 0s; */
     }
 
     .name::before {
