@@ -20,11 +20,11 @@
 <li class="todo" class:completed={completed} class:animation--fadeOut={deleteAnimation === true} in:fade|local>
     <label class="label" for={'checkbox-' + id}>
         <input class="checkbox sr-only" id={'checkbox-' + id} type="checkbox" bind:checked={completed}>
-        <div class="fake-checkbox-wrapper">
-            <div class="fake-checkbox">
+        <span class="fake-checkbox-wrapper">
+            <span class="fake-checkbox">
                 <img class="icon-check" src="/assets/img/icon-check.svg" alt="" aria-hidden="true">
-            </div>
-        </div>
+            </span>
+        </span>
         <span class="name">{name}</span>
     </label>
     <button class="btn-close" type="button" aria-label="delete item" on:click|preventDefault={deleteTodo}>
@@ -83,6 +83,7 @@
     .fake-checkbox-wrapper {
         flex: 1 0 auto;
         position: relative;
+        display: block;
         width: 3rem;
         height: 3rem;
         margin-right: 3rem;
@@ -97,6 +98,7 @@
         position: absolute;
         top: 0;
         left: 0;
+        display: block;
         width: 3rem;
         height: 3rem;
         border-radius: 50%;
