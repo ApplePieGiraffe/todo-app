@@ -6,12 +6,19 @@
     // themes
     let body = window.document.body;
     let themes = ['dark-theme', 'light-theme', 'christmas-theme'];
-    let themeIndex = 0;
+
+    if (localStorage.getItem('themeIndex') === null) {
+        localStorage.setItem('themeIndex', 0);
+    }
+
+    let themeIndex = localStorage.getItem('themeIndex');
+    body.classList.add(themes[themeIndex % themes.length]);
 
     function changeTheme() {
         themeIndex++;
         body.className = '';
         body.classList.add(themes[themeIndex % themes.length]);
+        localStorage.setItem('themeIndex', themeIndex);
     }
 
     // background images

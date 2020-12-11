@@ -1,6 +1,8 @@
 html {
-    font-size: 50%;
+    position: relative;
     box-sizing: border-box;
+    font-size: 50%;
+    overflow-x: hidden;
 }
 
 *,
@@ -12,9 +14,12 @@ html {
 }
 
 body {
+    background: url('/assets/img/trees-1.png'), url('/assets/img/trees-2.png'), var(--color-bg);
+    background-position: bottom -1rem left -100%, bottom -1rem right -100%;
+    background-size: 30rem;
+    background-repeat: no-repeat;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 2.25rem;
-    background: var(--color-bg);
     transition: background 1s;
 }
 
@@ -44,12 +49,17 @@ body {
 }
 
 .christmas-theme {
-    --color-bg: #59886b;
-    --color-surface: hsl(13, 100%, 31%);
-    --color-border: #000dc4;
-    --color-text-active: hsl(153, 100%, 15%);
-    --color-text-1: #c05555;
-    --box-shadow: 0px 35px 50px -15px rgba(78, 105, 35, 0.5);
+    --color-bg: #E1E1E1;
+    --color-surface: #f93838;
+    --color-border: #ff7171;
+    --color-text-active: #f1faee;
+    --color-text-completed: #ff7474;
+    --color-text-1: #ffa7a7;
+    --box-shadow: 0px 35px 50px -15px rgba(190, 0, 0, 0.5);
+}
+
+body.christmas-theme {
+    background-position: bottom -1rem left -10rem, bottom -1rem right -10rem;
 }
 
 .sr-only {
@@ -64,4 +74,10 @@ body {
 
 *:focus {
     outline: 2px dotted var(--color-text-active);
+}
+
+@media only screen and (min-width: 600px) {
+    body {
+        background-size: 42rem;
+    }
 }

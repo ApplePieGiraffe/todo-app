@@ -1,10 +1,12 @@
 ### Todo
 
-<!-- * local storage -->
+<!-- * local storage... theme/todo-list -->
 <!-- * add transitions/animations -->
 * add "Clear Completed" transition/animation
 <!-- * accessibility -->
-* drag-and-drop
+<!-- * drag-and-drop -->
+* christmas theme
+* snow
 
 *Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
 

@@ -7,8 +7,6 @@
     // create name 'todos'...
     let todos;
 
-    console.log('flagged');
-
     // add todos to local storage if not already in local storage...
     if (localStorage.getItem('todos') === null) {
         localStorage.setItem('todos', JSON.stringify([
@@ -113,7 +111,7 @@
 
 <form class="todo-list" on:submit|preventDefault={addTodo}>
     <div class="todo-list__input-wrapper">
-        <input class="todo-list__input" type="text" placeholder="Create a new todo..." bind:value={newTodo}>
+        <input class="todo-list__input" type="text" placeholder="Create a new todo..." aria-label="add a new item to the todo list" bind:value={newTodo}>
     </div>
 
     <div class="todo-list__container">
@@ -276,7 +274,7 @@
 
     /* media queries */
 
-    @media only screen and (min-width: 800px) {
+    @media only screen and (min-width: 600px) {
         .todo-list {
             margin-bottom: 6rem;
         }
