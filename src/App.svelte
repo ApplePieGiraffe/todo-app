@@ -2,6 +2,8 @@
     // components
     import ThemeBtn from './components/ThemeBtn.svelte';
     import TodoList from './components/TodoList.svelte';
+    import Todo from './components/Todo.svelte';
+    import { onMount } from 'svelte';
 
     // themes
     let body = window.document.body;
@@ -11,8 +13,10 @@
         localStorage.setItem('themeIndex', 0);
     }
 
+    let unusedVar = 'idk'
+
     let themeIndex = localStorage.getItem('themeIndex');
-    body.classList.add(themes[themeIndex % themes.length]);
+    body.classList.add(themes[themeIndex % themes.length])
 
     function changeTheme() {
         themeIndex++;
@@ -47,6 +51,10 @@
     {#each bgImgs as bgImg (bgImg.id)}
         <picture>
             <source media="(max-width: 399px)" srcset={bgImg.pathMobile}>
+
+
+
+
             <img class="bg-img" src={bgImg.pathDesktop} alt="" class:bg-img--active={themes[themeIndex % themes.length] === bgImg.theme}>
         </picture>
     {/each}
@@ -59,6 +67,10 @@
     </div>
 
     <TodoList/>
+
+    <notanhtmlelement></notanhtmlelement>
+
+    {@debug}
 
     <div class="main__footer">
         <p class="note">Drag and drop to reorder list.</p>
@@ -109,8 +121,8 @@
 
     .main__header {
         display: flex;
-        align-items: center;
-        margin-bottom: 5rem;
+      align-items: center;
+      margin-bottom: 5rem;
     }
 
     .heading {
@@ -128,8 +140,8 @@
         color: var(--color-text-1);
         letter-spacing: -.2px;
         line-height: 1.75rem;
-        text-align: center;
-        transition: color 1s;
+    text-align: center;
+    transition: color 1s;
     }
 
     .note {
@@ -158,8 +170,9 @@
         }
 
         .heading {
-            font-size: 5rem;
-            line-height: 5rem;
+    font-size: 5rem;
+    line-height: 5rem;
         }
     }
 </style>
+
